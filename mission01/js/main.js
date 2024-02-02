@@ -21,10 +21,12 @@ function emailReg(text) {
     const re =
       /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(text).toLowerCase());
-  } else if (this.value[0]) {
+  } else if (this.value.includes("@")) {
     email.classList.remove("is--invalid");
-  } else {
+  } else if (this.value[0]) {
     email.classList.add("is--invalid");
+  } else {
+    email.classList.toggle("is--invalid");
   }
 }
 
@@ -33,7 +35,6 @@ function pwReg(text) {
     const re = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^*+=-]).{6,16}$/;
     return re.test(String(text).toLowerCase());
   } else {
-    email.classList.add("is--invalid");
   }
 }
 
