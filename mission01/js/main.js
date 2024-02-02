@@ -21,7 +21,7 @@ function emailReg(text) {
     const re =
       /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(text).toLowerCase());
-  } else if (this.value.includes("@")) {
+  } else if (this.value.includes("@naver.com")) {
     email.classList.remove("is--invalid");
   } else if (this.value[0]) {
     email.classList.add("is--invalid");
@@ -32,9 +32,19 @@ function emailReg(text) {
 
 function pwReg(text) {
   if (this.value === user.pw) {
+    userPassword.classList.remove("is--invalid");
     const re = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^*+=-]).{6,16}$/;
     return re.test(String(text).toLowerCase());
+  } else if (
+    this.value.includes("!", "@", "#", "$", "%", "^", "*", "+", "=", "-")
+  ) {
+    userPassword.classList.remove("is--invalid");
+  } else if (this.value[5] < this.value) {
+    userPassword.classList.remove("is--invalid");
+  } else if (this.value[0]) {
+    userPassword.classList.add("is--invalid");
   } else {
+    userPassword.classList.toggle("is--invalid");
   }
 }
 
