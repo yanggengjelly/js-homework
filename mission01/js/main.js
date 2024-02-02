@@ -12,18 +12,30 @@ const user = {
 
 */
 
+const email = document.querySelector("#userEmail");
+const userPassword = document.querySelector("#userPassword");
+
 function emailReg(text) {
-  const re =
-    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-  return re.test(String(text).toLowerCase());
+  if (this.value === user.id) {
+    email.classList.remove("is--invalid");
+    const re =
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(text).toLowerCase());
+  } else if (this.value[0]) {
+    email.classList.remove("is--invalid");
+  } else {
+    email.classList.add("is--invalid");
+  }
 }
-
-emailReg("");
 
 function pwReg(text) {
-  const re = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^*+=-]).{6,16}$/;
-  return re.test(String(text).toLowerCase());
+  if (this.value === user.pw) {
+    const re = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^*+=-]).{6,16}$/;
+    return re.test(String(text).toLowerCase());
+  } else {
+    email.classList.add("is--invalid");
+  }
 }
 
-pwReg("");
+email.addEventListener("input", emailReg);
+userPassword.addEventListener("input", pwReg);
