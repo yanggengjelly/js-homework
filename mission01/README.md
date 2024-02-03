@@ -65,7 +65,7 @@ classList.toggle 메서드는 HTML 요소의 클래스 목록에 특정 클래�
 이러한 속성으로 `add` , `remove` 을 활용하여 어떠한 조건에 </br>
 classList를 활성화해야 하는지 제거해야 하는지 고려하며 코드로직을 작성함
 
-## 2. .some method
+## 3. .some method
 
 [mdn - Array.prototype.some()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some)
 
